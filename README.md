@@ -4,7 +4,7 @@
 
 <br/>
 
-[![CI](https://img.shields.io/github/actions/workflow/status/<you>/<repo>/ci.yml?branch=main&label=CI&logo=github&style=flat-square)](https://github.com/<you>/<repo>/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/hassanireza/supercarShowcase/ci.yml?branch=main&label=CI&logo=github&style=flat-square)](https://github.com/<you>/<repo>/actions/workflows/ci.yml)
 [![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white&style=flat-square)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white&style=flat-square)](https://www.typescriptlang.org)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white&style=flat-square)](https://vitejs.dev)
