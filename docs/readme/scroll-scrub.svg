@@ -1,0 +1,75 @@
+<svg viewBox="0 0 1200 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scroll-scrub mechanic diagram">
+  <defs>
+    <style>
+      .label { font-family: Oswald, Arial Narrow, sans-serif; font-weight: 600; font-size: 14; fill: #f2f2f4; }
+      .sub { font-family: Inter, -apple-system, sans-serif; font-size: 11.5; fill: #9a9aa4; }
+      .mono { font-family: JetBrains Mono, monospace; font-size: 11; fill: #ffb800; }
+    </style>
+  </defs>
+  <rect width="1200" height="460" fill="#05050a"/>
+
+  <!-- track -->
+  <rect x="80" y="60" width="140" height="340" rx="10" fill="#0c0c14" stroke="#ffffff" stroke-opacity="0.14"/>
+  <text x="150" y="44" text-anchor="middle" class="label">SCROLL POSITION</text>
+
+  <!-- scroll thumb positions -->
+  <rect x="92" y="80" width="116" height="34" rx="6" fill="#ffffff" fill-opacity="0.08"/>
+  <rect x="92" y="220" width="116" height="34" rx="6" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="92" y="346" width="116" height="34" rx="6" fill="#ffffff" fill-opacity="0.08"/>
+
+  <text x="150" y="101" text-anchor="middle" class="mono">0%</text>
+  <text x="150" y="241" text-anchor="middle" class="mono">50%</text>
+  <text x="150" y="367" text-anchor="middle" class="mono">100%</text>
+
+  <!-- arrows to frames -->
+  <path d="M220,97 L420,97" stroke="#9a9aa4" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M220,237 L420,237" stroke="#9a9aa4" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M220,363 L420,363" stroke="#9a9aa4" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#9a9aa4"/>
+    </marker>
+  </defs>
+
+  <!-- frame previews -->
+  <g>
+    <rect x="430" y="72" width="200" height="52" rx="8" fill="#0c0c14" stroke="#ffb800" stroke-opacity="0.6"/>
+    <text x="530" y="93" text-anchor="middle" class="label">frame_0001.webp</text>
+    <text x="530" y="112" text-anchor="middle" class="sub">canvas draw &#8226; poster state</text>
+  </g>
+  <g>
+    <rect x="430" y="212" width="200" height="52" rx="8" fill="#0c0c14" stroke="#ffb800" stroke-opacity="0.6"/>
+    <text x="530" y="233" text-anchor="middle" class="label">frame_0090.webp</text>
+    <text x="530" y="252" text-anchor="middle" class="sub">canvas draw &#8226; mid scrub</text>
+  </g>
+  <g>
+    <rect x="430" y="338" width="200" height="52" rx="8" fill="#0c0c14" stroke="#ffb800" stroke-opacity="0.6"/>
+    <text x="530" y="359" text-anchor="middle" class="label">frame_0180.webp</text>
+    <text x="530" y="378" text-anchor="middle" class="sub">canvas draw &#8226; scrub complete</text>
+  </g>
+
+  <!-- pin duration bracket -->
+  <path d="M670,80 L700,80 L700,382 L670,382" fill="none" stroke="#3ecbff" stroke-width="2"/>
+  <text x="716" y="90" class="label" fill="#3ecbff">GSAP ScrollTrigger.pin</text>
+  <text x="716" y="108" class="sub">Section stays fixed on screen while</text>
+  <text x="716" y="124" class="sub">the visitor scrolls through it &#8212; no</text>
+  <text x="716" y="140" class="sub">CSS position:sticky involved.</text>
+
+  <text x="716" y="176" class="label" fill="#3ecbff">frameCount auto-detect</text>
+  <text x="716" y="194" class="sub">Binary search finds the real last</text>
+  <text x="716" y="210" class="sub">frame on disk before the visitor</text>
+  <text x="716" y="226" class="sub">reaches the section &#8212; the scroll</text>
+  <text x="716" y="242" class="sub">distance always matches what's</text>
+  <text x="716" y="258" class="sub">actually there. No frozen holds,</text>
+  <text x="716" y="274" class="sub">no dead scroll space.</text>
+
+  <text x="716" y="310" class="label" fill="#3ecbff">Scroll speed &#8594; playback speed</text>
+  <text x="716" y="328" class="sub">Scrub is position-driven, not</text>
+  <text x="716" y="344" class="sub">time-driven &#8212; scroll fast, the</text>
+  <text x="716" y="360" class="sub">sequence flashes by fast. Same</text>
+  <text x="716" y="376" class="sub">principle Apple's product pages use.</text>
+
+  <rect x="80" y="418" width="1040" height="1" fill="#ffffff" fill-opacity="0.08"/>
+  <text x="80" y="446" class="sub">HeroFrameScrub.tsx &#8212; onUpdate(self) maps self.progress &#215; frameCount to the nearest loaded frame, drawn to a &lt;canvas&gt;</text>
+</svg>

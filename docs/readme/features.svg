@@ -1,0 +1,66 @@
+<svg viewBox="0 0 1200 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Feature grid">
+  <defs>
+    <style>
+      .card { fill: #0c0c14; stroke: #ffffff; stroke-opacity: 0.12; stroke-width: 1.5; }
+      .title { font-family: Oswald, Arial Narrow, sans-serif; font-weight: 600; font-size: 15; fill: #f2f2f4; }
+      .desc { font-family: Inter, -apple-system, sans-serif; font-size: 11.5; fill: #9a9aa4; }
+      .icon { stroke-width: 1.8; fill: none; }
+    </style>
+  </defs>
+  <rect width="1200" height="260" fill="#05050a"/>
+
+  <!-- Card 1: Frame scrub -->
+  <rect x="20" y="20" width="280" height="220" rx="12" class="card"/>
+  <g transform="translate(48,48)" class="icon" stroke="#ff1a1a">
+    <rect x="0" y="0" width="40" height="28" rx="3"/>
+    <path d="M8,8 L20,14 L8,20 Z" fill="#ff1a1a" stroke="none"/>
+    <line x1="0" y1="34" x2="40" y2="34"/>
+    <line x1="6" y1="34" x2="6" y2="40"/>
+    <line x1="34" y1="34" x2="34" y2="40"/>
+  </g>
+  <text x="48" y="112" class="title">Scroll-scrub hero</text>
+  <text x="48" y="134" class="desc">180-frame image sequence,</text>
+  <text x="48" y="150" class="desc">painted to canvas as you scroll.</text>
+  <text x="48" y="166" class="desc">Pinned with GSAP, not CSS</text>
+  <text x="48" y="182" class="desc">sticky.</text>
+
+  <!-- Card 2: auto frame detection -->
+  <rect x="310" y="20" width="280" height="220" rx="12" class="card"/>
+  <g transform="translate(338,48)" class="icon" stroke="#ffb800">
+    <circle cx="14" cy="14" r="13"/>
+    <path d="M14,7 L14,14 L19,17"/>
+    <path d="M30,14 L40,14" stroke-dasharray="2 3"/>
+  </g>
+  <text x="338" y="112" class="title">Self-correcting timing</text>
+  <text x="338" y="134" class="desc">Binary-searches the real frame</text>
+  <text x="338" y="150" class="desc">count before the section comes</text>
+  <text x="338" y="166" class="desc">into view &#8212; scroll distance</text>
+  <text x="338" y="182" class="desc">always matches real assets.</text>
+
+  <!-- Card 3: exploded view -->
+  <rect x="600" y="20" width="280" height="220" rx="12" class="card"/>
+  <g transform="translate(628,48)" class="icon" stroke="#3ecbff">
+    <rect x="4" y="4" width="14" height="14"/>
+    <rect x="22" y="4" width="14" height="14"/>
+    <rect x="4" y="22" width="14" height="14"/>
+    <rect x="22" y="22" width="14" height="14"/>
+  </g>
+  <text x="628" y="112" class="title">Exploded-view centerpiece</text>
+  <text x="628" y="134" class="desc">A dedicated part-by-part reveal</text>
+  <text x="628" y="150" class="desc">for the Bugatti Tourbillon,</text>
+  <text x="628" y="166" class="desc">pinned and staged with its own</text>
+  <text x="628" y="182" class="desc">ScrollTrigger timeline.</text>
+
+  <!-- Card 4: data driven -->
+  <rect x="890" y="20" width="290" height="220" rx="12" class="card"/>
+  <g transform="translate(918,48)" class="icon" stroke="#c9a24b">
+    <line x1="0" y1="6" x2="40" y2="6"/>
+    <line x1="0" y1="18" x2="40" y2="18"/>
+    <line x1="0" y1="30" x2="26" y2="30"/>
+  </g>
+  <text x="918" y="112" class="title">One data file per site</text>
+  <text x="918" y="134" class="desc">Every car &#8212; frames, stats,</text>
+  <text x="918" y="150" class="desc">captions, accent colors &#8212; comes</text>
+  <text x="918" y="166" class="desc">from a single typed object in</text>
+  <text x="918" y="182" class="desc">data/cars.ts.</text>
+</svg>
