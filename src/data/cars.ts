@@ -7,6 +7,15 @@ import type { CarData } from "../types/car";
 // prefix for four cars (revuelto, tourbillon, utopia, model-y) instead of
 // the full car id, while `placeholders/` and `videos/` use the full id.
 
+// GitHub Pages serves this app from /<repo>/, not the domain root, so every
+// asset path below (all plain strings, not static imports Vite can rewrite)
+// needs the base prefix applied manually. import.meta.env.BASE_URL is "/"
+// locally and "/supercarShowcase/" in production (set via GITHUB_PAGES_BASE
+// in vite.config.ts). Strip any leading slash off the raw path before
+// joining so we don't end up with a double slash.
+const asset = (path: string): string =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 export const cars: CarData[] = [
   {
     id: "roadster",
@@ -16,34 +25,34 @@ export const cars: CarData[] = [
     accentColor: "#e0e0e0",
     accentColorSecondary: "#8a8a8a",
     heroFrames: {
-      path: "/assets/frames/roadster",
+      path: asset("/assets/frames/roadster"),
       frameCount: 180, // TODO: verify against actual file count in public/assets/frames/roadster
     },
-    placeholderHeroImage: "/assets/placeholders/roadster-hero.webp",
+    placeholderHeroImage: asset("/assets/placeholders/roadster-hero.webp"),
     details: [
       {
         id: "front-fascia",
         label: "Front Fascia",
         caption: "No grille needed. Nothing here to cool the old way.",
-        image: "/assets/details/roadster-fascia.webp",
+        image: asset("/assets/details/roadster-fascia.webp"),
       },
       {
         id: "wheels-brakes",
         label: "Wheels & Brakes",
         caption: "Regenerative braking that thinks faster than you do.",
-        image: "/assets/details/roadster-brakes.webp",
+        image: asset("/assets/details/roadster-brakes.webp"),
       },
       {
         id: "rear-diffuser",
         label: "Rear Diffuser",
         caption: "Silent thrust. The only sound left is the wind.",
-        image: "/assets/details/roadster-diffuser.webp",
+        image: asset("/assets/details/roadster-diffuser.webp"),
       },
       {
         id: "cockpit",
         label: "Cockpit",
         caption: "A cabin built around a screen instead of a tachometer.",
-        image: "/assets/details/roadster-cockpit.webp",
+        image: asset("/assets/details/roadster-cockpit.webp"),
       },
     ],
     stats: {
@@ -73,34 +82,34 @@ export const cars: CarData[] = [
     accentColor: "#ff1a1a",
     accentColorSecondary: "#8b0000",
     heroFrames: {
-      path: "/assets/frames/ferrari-f80",
+      path: asset("/assets/frames/ferrari-f80"),
       frameCount: 180, // TODO: verify against actual file count in public/assets/frames/ferrari-f80
     },
-    placeholderHeroImage: "/assets/placeholders/ferrari-f80-hero.webp",
+    placeholderHeroImage: asset("/assets/placeholders/ferrari-f80-hero.webp"),
     details: [
       {
         id: "front-fascia",
         label: "Front Fascia",
         caption: "Air does the talking before the engine ever does.",
-        image: "/assets/details/ferrari-f80-fascia.webp",
+        image: asset("/assets/details/ferrari-f80-fascia.webp"),
       },
       {
         id: "wheels-brakes",
         label: "Wheels & Brakes",
         caption: "Carbon ceramic discs built to erase speed on command.",
-        image: "/assets/details/ferrari-f80-brakes.webp",
+        image: asset("/assets/details/ferrari-f80-brakes.webp"),
       },
       {
         id: "rear-diffuser",
         label: "Rear Diffuser",
         caption: "Every channel here earns its keep at 300 km/h.",
-        image: "/assets/details/ferrari-f80-diffuser.webp",
+        image: asset("/assets/details/ferrari-f80-diffuser.webp"),
       },
       {
         id: "cockpit",
         label: "Cockpit",
         caption: "A seat fused to the chassis. Nothing sits between you and it.",
-        image: "/assets/details/ferrari-f80-cockpit.webp",
+        image: asset("/assets/details/ferrari-f80-cockpit.webp"),
       },
     ],
     stats: {
@@ -130,34 +139,34 @@ export const cars: CarData[] = [
     accentColor: "#ffb800",
     accentColorSecondary: "#ff6a00",
     heroFrames: {
-      path: "/assets/frames/lamborghini-revuelto",
+      path: asset("/assets/frames/lamborghini-revuelto"),
       frameCount: 180, // TODO: verify against actual file count in public/assets/frames/lamborghini-revuelto
     },
-    placeholderHeroImage: "/assets/placeholders/lamborghini-revuelto-hero.webp",
+    placeholderHeroImage: asset("/assets/placeholders/lamborghini-revuelto-hero.webp"),
     details: [
       {
         id: "front-fascia",
         label: "Front Fascia",
         caption: "A face built to intimidate before it ever moves.",
-        image: "/assets/details/revuelto-fascia.webp",
+        image: asset("/assets/details/revuelto-fascia.webp"),
       },
       {
         id: "wheels-brakes",
         label: "Wheels & Brakes",
         caption: "Three motors, one V12, zero hesitation.",
-        image: "/assets/details/revuelto-brakes.webp",
+        image: asset("/assets/details/revuelto-brakes.webp"),
       },
       {
         id: "rear-diffuser",
         label: "Rear Diffuser",
         caption: "The exhaust note starts here and never apologizes.",
-        image: "/assets/details/revuelto-diffuser.webp",
+        image: asset("/assets/details/revuelto-diffuser.webp"),
       },
       {
         id: "cockpit",
         label: "Cockpit",
         caption: "Fighter jet ergonomics for a car that flies low.",
-        image: "/assets/details/revuelto-cockpit.webp",
+        image: asset("/assets/details/revuelto-cockpit.webp"),
       },
     ],
     stats: {
@@ -188,34 +197,34 @@ export const cars: CarData[] = [
     accentColorSecondary: "#050510",
     isCenterpiece: true,
     heroFrames: {
-      path: "/assets/frames/bugatti-tourbillon",
+      path: asset("/assets/frames/bugatti-tourbillon"),
       frameCount: 180, // TODO: verify against actual file count in public/assets/frames/bugatti-tourbillon
     },
-    placeholderHeroImage: "/assets/placeholders/bugatti-tourbillon-hero.webp",
+    placeholderHeroImage: asset("/assets/placeholders/bugatti-tourbillon-hero.webp"),
     details: [
       {
         id: "front-fascia",
         label: "Front Fascia",
         caption: "The horseshoe grille. Unmistakable from any distance.",
-        image: "/assets/details/tourbillon-fascia.webp",
+        image: asset("/assets/details/tourbillon-fascia.webp"),
       },
       {
         id: "wheels-brakes",
         label: "Wheels & Brakes",
         caption: "Titanium construction, machined like a fine watch movement.",
-        image: "/assets/details/tourbillon-brakes.webp",
+        image: asset("/assets/details/tourbillon-brakes.webp"),
       },
       {
         id: "rear-diffuser",
         label: "Rear Diffuser",
         caption: "A hybrid V16 exhales through here at full throttle.",
-        image: "/assets/details/tourbillon-diffuser.webp",
+        image: asset("/assets/details/tourbillon-diffuser.webp"),
       },
       {
         id: "cockpit",
         label: "Cockpit",
         caption: "An analog instrument cluster in a digital era. On purpose.",
-        image: "/assets/details/tourbillon-cockpit.webp",
+        image: asset("/assets/details/tourbillon-cockpit.webp"),
       },
     ],
     stats: {
@@ -245,34 +254,34 @@ export const cars: CarData[] = [
     accentColor: "#c9a24b",
     accentColorSecondary: "#7a5c1e",
     heroFrames: {
-      path: "/assets/frames/pagani-utopia",
+      path: asset("/assets/frames/pagani-utopia"),
       frameCount: 180, // TODO: verify against actual file count in public/assets/frames/pagani-utopia
     },
-    placeholderHeroImage: "/assets/placeholders/pagani-utopia-hero.webp",
+    placeholderHeroImage: asset("/assets/placeholders/pagani-utopia-hero.webp"),
     details: [
       {
         id: "front-fascia",
         label: "Front Fascia",
         caption: "Every curve here was sculpted, never simulated.",
-        image: "/assets/details/utopia-fascia.webp",
+        image: asset("/assets/details/utopia-fascia.webp"),
       },
       {
         id: "wheels-brakes",
         label: "Wheels & Brakes",
         caption: "Forged alloys finished by hand, not by robot arm.",
-        image: "/assets/details/utopia-brakes.webp",
+        image: asset("/assets/details/utopia-brakes.webp"),
       },
       {
         id: "rear-diffuser",
         label: "Rear Diffuser",
         caption: "Quad titanium exhausts, tuned like an instrument.",
-        image: "/assets/details/utopia-diffuser.webp",
+        image: asset("/assets/details/utopia-diffuser.webp"),
       },
       {
         id: "cockpit",
         label: "Cockpit",
         caption: "Exposed mechanisms. Nothing hidden, everything earned.",
-        image: "/assets/details/utopia-cockpit.webp",
+        image: asset("/assets/details/utopia-cockpit.webp"),
       },
     ],
     stats: {
@@ -302,34 +311,34 @@ export const cars: CarData[] = [
     accentColor: "#3ecbff",
     accentColorSecondary: "#0a5c8a",
     heroFrames: {
-      path: "/assets/frames/tesla-model-y",
+      path: asset("/assets/frames/tesla-model-y"),
       frameCount: 180, // TODO: verify against actual file count in public/assets/frames/tesla-model-y
     },
-    placeholderHeroImage: "/assets/placeholders/tesla-model-y-hero.webp",
+    placeholderHeroImage: asset("/assets/placeholders/tesla-model-y-hero.webp"),
     details: [
       {
         id: "front-fascia",
         label: "Front Fascia",
         caption: "Clean lines, because there is no engine left to hide.",
-        image: "/assets/details/model-y-fascia.webp",
+        image: asset("/assets/details/model-y-fascia.webp"),
       },
       {
         id: "wheels-brakes",
         label: "Wheels & Brakes",
         caption: "Aero wheels shaped by wind tunnels, not trends.",
-        image: "/assets/details/model-y-brakes.webp",
+        image: asset("/assets/details/model-y-brakes.webp"),
       },
       {
         id: "rear-diffuser",
         label: "Rear Diffuser",
         caption: "Efficiency written into every millimeter out back.",
-        image: "/assets/details/model-y-diffuser.webp",
+        image: asset("/assets/details/model-y-diffuser.webp"),
       },
       {
         id: "cockpit",
         label: "Cockpit",
         caption: "A cabin that gets smarter every time it updates.",
-        image: "/assets/details/model-y-cockpit.webp",
+        image: asset("/assets/details/model-y-cockpit.webp"),
       },
     ],
     stats: {
