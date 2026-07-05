@@ -154,7 +154,7 @@ export function CarSection({ car, reducedMotion, index }: CarSectionProps): Reac
         <div className="color-reveal__grid color-reveal__grid--video-only">
           <div className="color-reveal__video-wrap">
             <InlineVideo
-              src={`/assets/videos/${car.id}.mp4`}
+              src={`${import.meta.env.BASE_URL}assets/videos/${car.id}.mp4`}
               posterSrc={car.placeholderHeroImage}
               label={car.name}
               defaultMuted={false}
