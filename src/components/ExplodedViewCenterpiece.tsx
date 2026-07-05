@@ -23,7 +23,12 @@ interface ExplodedComponent {
 }
 
 function buildComponents(accent: string, secondary: string): ExplodedComponent[] {
-  const basePath = "/assets/exploded/bugatti-tourbillon";
+  // GitHub Pages serves this app from /<repo>/, not the domain root, so this
+  // raw path string needs the base prefix applied manually (Vite only
+  // rewrites index.html and static imports automatically, not runtime
+  // strings like this one). import.meta.env.BASE_URL is "/" locally and
+  // "/supercarShowcase/" in production.
+  const basePath = `${import.meta.env.BASE_URL}assets/exploded/bugatti-tourbillon`;
   return [
     {
       id: "chassis",
