@@ -6,6 +6,15 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     name: Lint & Build
@@ -21,6 +30,13 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Verify lockfile is present
+        run: |
+          if [ ! -f package-lock.json ]; then
+            echo "::error::package-lock.json is missing from this checkout. Run 'git add package-lock.json && git commit && git push' locally, then re-run this workflow."
+            exit 1
+          fi
+
       - name: Install dependencies
         run: npm ci
 
@@ -29,10 +45,34 @@ jobs:
 
       - name: Type-check & build
         run: npm run build
+        env:
+          # GitHub Pages serves this as a project site at /<repo>/, not at
+          # the domain root — Vite needs that as its base path so built
+          # asset URLs resolve correctly once deployed.
+          GITHUB_PAGES_BASE: /${{ github.event.repository.name }}/
 
-      - name: Upload build output
+      - name: Upload build output (CI artifact)
         uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist
           retention-days: 7
+
+      - name: Upload build output (Pages artifact)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
